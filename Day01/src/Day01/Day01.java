@@ -1,0 +1,23 @@
+package Day01;
+
+import java.util.Scanner;
+
+public class Day01 {
+	public static void main(String[] args) {
+		System.out.println("안녕하세요 저는 이현우 입니다.");
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.print("정수를 입력해주세요 : ");
+		int i = sc.nextInt();
+		
+		if(i > 0) {
+			System.out.println("i는 정수 입니다.");
+		}else {
+			System.out.println("i는 정수가 아닙니다.");
+		}
+		sc.close();
+		
+		
+		
+	}
+}
