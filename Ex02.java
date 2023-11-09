@@ -1,34 +1,36 @@
-package variable;
+package wrapperclass;
 
 public class Ex02 {
-
 	public static void main(String[] args) {
+		//Wrapper Class와 primitive type 사이의 값 대입
 		
-		// 변수의 자료형에 따라서 담을수 있는 데이터가 다르다
+		// float과 long은 대표자료형이 아니므로, F혹은 L을 값 뒤에 붙여준다.
+		float fl = 1.2f;
+		double db = 0;
 		
-		boolean v1 = true;	//1바이트 논리값을 저장할수 있는 변수
-		byte by = 100;		//1바이트 정수를 저장할수 있는 변수
-		int num = 200;		//4바이트 정수를 저장할수 있는 변수
-		double db = 300;	//8바이트 실수를 저장할수 있는 변수
+		db = fl;	//primitive type 끼리는 호환되므로, 대입이 가능하다.
+					// 왼쪽 변수의 자료형이 더 크기 때문에 값의 손실이 없어서 암묵적 형변환이 발생한다.
 		
-		System.out.println("v1 : " + v1);
-		System.out.println("by : " + by);
-		System.out.println("num  : " + num);
-		System.out.println("db : " + db);
-		
-//		v1 = byte;	//정수를 저장하는 변수에 논리값을 저장할수 없다.
-//		by = num;	//1바이트 정수형 변수에 4바이트 정수값을 저장할수 없다.(범위초과)
-//		num = db;	//4바이트 정수형 변수에 8바이트 실수값을 저장할수 없다.(소수점 이하 잘림)
-		
-		db = num; // 8바이트 실수형 변수에는 4바이트 정수를 저장할수 있다.
-		num = by; // 4바이트 정수형 변수에는 1바이트 정수를 저장할수 있다.
-//		by = v1;  // 1바이트 정수형 변수에는 1바이트 논리값을 저장할수 없다. (타입이 다르다)
-		
+		System.out.println("f1 : " + fl + "       /db : " + db);
 		System.out.println();
-		System.out.println("v1 : " + v1);
-		System.out.println("by : " + by);
-		System.out.println("num  : " + num);
-		System.out.println("db : " + db);
+		
+		Float fl2 = 1.2F;
+		Double db2 = 0.0;	// int 0을 바로 담을수 없어서, 실수 형태로 나타내야 한다.
+		
+//		db2 = fl2;  // Wrapper Class 끼리는 같은 실수라도, 서로 호환되지 않는다.
+					// Wrapper Class 는 자신과 같은 타입의 primitive만 호환된다.
+		
+//		db2 = (Double)fl2; // 강제 형변환을 시도해도, 호환되지 않으므로 처리할수 없다.
+		
+		// 1) 서로 호환되는 primitive 타입을 이용하여 강제 형변환으로 대입하기.
+		// Float -> float -> double -> Double
+		db2 = (double)(float)fl2;
+		
+		// 2) Wrapper 클래스에서 제공하는 기능(함수)을 활용한다.
+		db2 = Double.valueOf(fl2);
+		
+		System.out.println("fl2 : " + fl2 + ", db2 : " + db2 );
+		System.out.println();
+		
 	}
-
 }

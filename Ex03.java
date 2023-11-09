@@ -1,50 +1,35 @@
-package variable;
+package wrapperclass;
 
 public class Ex03 {
-
 	public static void main(String[] args) {
-		// 자료형 변환
+		//사용자의 입력값은 주로 키보드를 통해서 들어오기 때문에 string 타입으로 나타낸다.
+		//사용자가 입력한 값을 숫자로 계산해야 한다면 형변환이 필요하다.
+		//이때, String을 곧바로 int나 double로 변환할 수는 없다.
+		//따라서, Wrapper Class의 parse 함수를 사용할 수 있다.
 		
-		byte by = 10;
-		int num = 20;
+		String s1 = "1234";
+		String s2 = "3.14";
+		String s3 = "true";
 		
-		num = by; //1바이트 정수값을 4바이트 변수에 담을 수 있다
-				  //byte 자료형의 값이 int형으로 변경됨
-				  //암묵적 형 변환
+//		int v1 =s1;
+		int v1 = Integer.parseInt(s1); // 문자열의 형태를 유지하면서 정수로 변화
 		
-//		by = num; // 자료형으로만 판단하면 담을 수 없음
-				  // 값을 확인했을때 대입해도 잘리는 데이터가 없음
-				  // 혹은, 잘리는 부분을 감안하더라도 강제로 변환하여 대입하고 싶다면
-		by = (byte)num; // 명시적 형 변환, 값 앞에 원하는 자료형을 괄호 안에 넣어준다.
+//		double v2 = s2;
+		double v2 = Double.parseDouble(s2);// 문자열의 형태를 유지하면서 실수로 변환
 		
-		char ch = 65;	//2바이트 정수unsigned 정수(문자를 표현하기 위한 정수)
-						// 0 ~ 65535
-		short sh = 65;	//2바이트 정수signed 정수
-						// ~32768 ~ 32767
+//		boolean v3 = s3;
+		boolean v3 = Boolean.parseBoolean(s3); //문자열의 형태를 유지하면서 논리값으로 변환
 		
-		ch = (char)sh;	//Type mismatch: cannot convert from short to char
-		sh = (short)ch;	//Type mismatch: cannot convert from short to char
+		System.out.println("v1 : " + v1);
+		System.out.println("v2 : " + v2);
+		System.out.println("v3 : " + v3);
+		System.out.println();
 		
-		// 형변환에는 변수의 크기, 값의유형, 값의 표현범위도 복합적으로 고려한다.
+		System.out.println("v1 + 1 : " + (v1 + 1));
+		System.out.println("v2 + 2 : " + (v2 + 1));
+		System.out.println("!v3 : " + !v3);
+		System.out.println();
 		
-		ch = '가'; //44032
-		// ch의값을 sh에 강제 형변환 한 후 저장된 정수를 화면에 출력하세요
 		
-		sh =(short)ch;
-		System.out.println("sh : " + sh); // -21504
-		
-		int n1 = Character.MAX_VALUE;
-		int n2 = ch;
-		
-		System.out.println(n2 - n1 - n2);
-		
-		byte b1 = 127;
-		byte b2 = (byte)128;
-		
-		System.out.println("b1 + " + b1);
-		System.out.println("b2 + " + b2);
-		System.out.printf("b1 + %32s\n" + Integer.toBinaryString(b1));
-		System.out.printf("b2 + %32s\n" + Integer.toBinaryString(b2));
 	}
-
 }

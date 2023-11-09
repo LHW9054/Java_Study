@@ -1,51 +1,59 @@
-package variable;
+package wrapperclass;
+
+import java.util.*;
 
 public class Ex01 {
 	public static void main(String[] args) {
 		
-		// 변수 : 값을 저장해 두었다가, 다시 사용하기 위한 메모리 공간(값의 재활용)
-		// 함수 : 일정한 코드를 필요할때 마다 실행하기 위한 코드의 집합(코드의 재활용)
-		// 클래스: 일정한 형식을 정의해두었다가, 객체를 생성하기 위해 여러번 사용하는 타입(타입의 재활용)
+		// primitive type
+		// boolean, byte, char, short, int, long, float, double
 		
+		// Wrapper type : 원시 자료형의 값을 객체 형태로 저장하기 위해 사용하는 클래스
+		// Boolean, Byte, Character, Short, Integer, Long, Float, Double
 		
-		// 변수를 주소로 참조하면, 포인터(자바에서는 사용하지 않는다.)
-		// 변수를 이름으로 참조하면(reference)
+		byte by1 = 10; // 비 객체형
+		Byte by2 = 20; // 객체형
 		
-		// 변수를 생성하기 위해서는 자료형을 명시해야 한다.(변수의 선언)
-		// 이미 선언된 변수는 이름만으로 참조가능하다.
-		// 변수에 값을 저장하는 작업을 , 할당 혹은 대입이라고 한다.
-		// 변수를 선언하면서 동시에 값을 할당하는 작업을 초기화 라고 한다.
+		System.out.println("by1 :" + by1);
+		System.out.println("by2 :" + by2);
+		// 기본 자료형/Wrapper Class 모두값을 저장하는데 이용할수 있다.
+		// Wrapper Class는 값에 대한 [기능], 자료형에 대한 [기능]이 내장되어 있다.
 		
-		int num;	//[자료형] [변수이름]
-		num = 12;	// 변수에 값을 저장
-
-		int num2 = 23;	// 변수 선언 및 초기화
+		// 자바의 객체 지향 언어 특성을 제대로 활용하기 위해서 사용해야 할 경우가 있다.
 		
-		System.out.println(num);//선언된 변수는 이름만으로 참조할수 있다
-		System.out.println(num2);
+		// 1) 여러 정수가 포함되 배열에서 짝수만 골라내서 새로 담아서 출력하기
+		int[] arr = {7,5,4,2,8,1,9,5};
+		int[] arr2 = new int[3];
 		
-//		int num = 25; // 이미 선언된 변수는 지료형을 명시하지 않는다.
-					  // 새로운 변수를 만들기 위해서는 기존변수와 이름이 겹치지 않아야 한다.
+		int index = 0;
+		for(int i = 0; i <arr.length; i++) {
+			if(arr[i] % 2 == 0) {
+				arr2[index++] = arr[i];
+			}
+		}
 		
-		num2 = num; //대입연산의 좌변은 공간
-					//대입연산의 우변은 값
-					// 우변부터 먼저 처리한다.
+		System.out.println("arr2 :" + Arrays.toString(arr2));
+		System.out.println();
 		
-		num2 = num; //대입연산의 좌변은 공간
-					//대입연산의 우변은 값
-					//우변부터 먼저 처리한다.
+		// 2) 객체 지향 특성을 활용하여 간단하게 처리하기
+		//
+		Integer[] arr3 = {7,5,4,2,8,1,9,5};
 		
-//		num2 = num +2*3-4;
+		ArrayList<Integer> list = new ArrayList<>(Arrays.asList(arr3));
 		
-		num = 5;	//대입연산자 '=' 는 등호가 아니다.
-//		5 = num;	//등호는'=='로 표기한다.
+		System.out.println("list : " + list);
 		
-		System.out.println(num2);
+		list.removeIf(num -> num%2 !=0);		//만약 홀수이면 리스트에서 제거한다.
 		
-//		System.out.println(num3); // 선언하지 않았거나, 값이 할당되지 않았으면 참조불가
+		System.out.println("list : " + list);	
 		
-		int num3;
-//		System.out.println(num3);	//값이 할당되지 않았음
+		// (변수나 값이아닌)Wrapper Class 자체에 내장된 기능을 활용하는 경우
+		String s1 = "1234";
+//		int num = s1;		//강제 형변환도 자료형간의 호환성이 바탕이 되어야 한다.
+		
+		int num = Integer.parseInt(s1); 	// 문자열의 내용을 정수로 변환하는 과정
+		System.out.println(s1 + 1);			//문자열 + 숫자, 모양을 합친다.
+		System.out.println(num + 1);		//숫자 + 숫자, 값을 합친다.
 		
 		
 		
