@@ -1,62 +1,82 @@
-package wrapperclass;
-
-import java.util.*;
+package Operator;
 
 public class Ex01 {
 	public static void main(String[] args) {
+		// 논리연산자 : &&, ||, !
+		// boolean 타입의 값을 연산한다.
+		// && : and, 서로 다른 두 조건이 모두 true이면 true를 나타낸다.
+		// || : or, 서로 다른 두조건 중 하나라도 true 이면 true를 나타낸다.
+		// ! : not, 단항 연산자이며 true는 false로 바꾸고, false는 true로 바꾼다.
 		
-		// primitive type
-		// boolean, byte, char, short, int, long, float, double
+		boolean bo1 = true;
+		boolean bo2 = false;
 		
-		// Wrapper type : 원시 자료형의 값을 객체 형태로 저장하기 위해 사용하는 클래스
-		// Boolean, Byte, Character, Short, Integer, Long, Float, Double
+		System.out.println("bo1 && bo2 : " + (bo1 && bo2));
+		System.out.println("bo1 && true : " + (bo1 && true));
+		System.out.println("bo1 || bo2 : " + (bo1 || bo2));
+		System.out.println("bo1 || bo2 : " + (false && bo2));
 		
-		byte by1 = 10; // 비 객체형
-		Byte by2 = 20; // 객체형
+		// 서로 다른 두조건을 동시에 만족한다면 true
+		// 성별이 남성이고, 나이가 20세 이상인 겨우에만 true
+		String gender = "남성";
+		int age = 25;
 		
-		System.out.println("by1 :" + by1);
-		System.out.println("by2 :" + by2);
-		// 기본 자료형/Wrapper Class 모두값을 저장하는데 이용할수 있다.
-		// Wrapper Class는 값에 대한 [기능], 자료형에 대한 [기능]이 내장되어 있다.
+		boolean flag1 = gender.equals("남성") && age >= 20;
 		
-		// 자바의 객체 지향 언어 특성을 제대로 활용하기 위해서 사용해야 할 경우가 있다.
+		System.out.println("flag : " + flag1);
 		
-		// 1) 여러 정수가 포함되 배열에서 짝수만 골라내서 새로 담아서 출력하기
-		int[] arr = {7,5,4,2,8,1,9,5};
-		int[] arr2 = new int[3];
+		// 서로 다른 두조건중 하나라도 만족하면 true
+		// 현금이 5천원 이상 있거나, 카드를 가지고 있다면 true
 		
-		int index = 0;
-		for(int i = 0; i <arr.length; i++) {
-			if(arr[i] % 2 == 0) {
-				arr2[index++] = arr[i];
-			}
-		}
+		int cash = 10000;
+		boolean card = true;
 		
-		System.out.println("arr2 :" + Arrays.toString(arr2));
-		System.out.println();
+		boolean flag2 = cash >= 5000|| card == true;
+		System.out.println("flag2 : " + flag2);
 		
-		// 2) 객체 지향 특성을 활용하여 간단하게 처리하기
-		//
-		Integer[] arr3 = {7,5,4,2,8,1,9,5};
+		// 기존 조건의 반대경우를 나타내고 싶을때 ! 를 붙여준다.
+		System.out.println("!flag1 : " + !flag2);
 		
-		ArrayList<Integer> list = new ArrayList<>(Arrays.asList(arr3));
+		boolean tvpower = false;
 		
-		System.out.println("list : " + list);
+		System.out.println("tvpower : " + tvpower);
+		tvpower = !tvpower;//true
+
+		System.out.println("tvpower : " + tvpower);
+		tvpower = !tvpower;//false
 		
-		list.removeIf(num -> num%2 !=0);		//만약 홀수이면 리스트에서 제거한다.
+		System.out.println("tvpower : " + tvpower);
+		tvpower = !tvpower;//true
 		
-		System.out.println("list : " + list);	
+		System.out.println("tvpower : " + tvpower);
+		tvpower = !tvpower;//false
 		
-		// (변수나 값이아닌)Wrapper Class 자체에 내장된 기능을 활용하는 경우
-		String s1 = "1234";
-//		int num = s1;		//강제 형변환도 자료형간의 호환성이 바탕이 되어야 한다.
 		
-		int num = Integer.parseInt(s1); 	// 문자열의 내용을 정수로 변환하는 과정
-		System.out.println(s1 + 1);			//문자열 + 숫자, 모양을 합친다.
-		System.out.println(num + 1);		//숫자 + 숫자, 값을 합친다.
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
 		
 	}
+
 }

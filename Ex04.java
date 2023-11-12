@@ -1,25 +1,34 @@
-package operator;
+package Operator;
+
+import java.util.Random;
+import java.util.Scanner;
 
 public class Ex04 {
-	//연산자 : 값을 계산하여 다른 값을 만들어내거나 변화시키는 기호 미 단어의 집합
 	public static void main(String[] args) {
 		
-		// 산술 연산 : +, -, *, /, %
-		// 대입 연산 : =
-		// 복합 대입 연산 : +=, -+, *=, /=, %=
-		// 비교 연산 : >, <, >=, <=, ==, !=
-		// 논리 연산 : &&, ||, !
-		// 증감 연산 : +=, --
-		// 단항 부호 연산 : -
-		// 삼항 연산 : A? B : C
-		// 기타 최우선 연산 : [] . {소유격 조사 [의] 의 의미, [배열]}
-		//기타 연산 : , () instanceof new
+		Random ran = new Random();
+		Scanner sc = new Scanner(System.in);	//키보드 입력을 받아서 처리하는 객체
 		
-		// 1항 (단항) 연산 : 1개의 항에 대하여 연산한다.
-		// 2항 연산 : 2개의 항에 대하여 연산한다.
-		// 3항 연산 : 3개의 항에 대하여 연산한다.
+		int n1 = ran.nextInt(1) +1;		
+		int n2 = ran.nextInt(1) +1;		
+		Integer answer = null;
+		
+		System.out.println(n1 + " + " + n2 + " = ? ");
+		answer = Integer.parseInt(sc.nextLine());
+		
+		//삼항연산자 (둘 중 하나, 동전의 앞/뒤, 전원 on/off 로그인/로그아웃등)
+		System.out.println(answer == n1 + n2 ? "정답" : "오답");
+		
+		//분기문 (분기가 많거나, 수행하는 코드가 일정하지 않고, 내용이 길다면 분기문)
+		if(answer == n1 + n2) {
+			System.out.println("정답");
+		}
+		else {
+			System.out.println("오답");
+		}
+		sc.close();	// 프로그램이 끌날때 입력통로를 닫아줘야 한다.
+		
 		
 		
 	}
-
 }

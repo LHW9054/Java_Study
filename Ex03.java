@@ -1,35 +1,52 @@
-package wrapperclass;
+package Operator;
 
 public class Ex03 {
 	public static void main(String[] args) {
-		//사용자의 입력값은 주로 키보드를 통해서 들어오기 때문에 string 타입으로 나타낸다.
-		//사용자가 입력한 값을 숫자로 계산해야 한다면 형변환이 필요하다.
-		//이때, String을 곧바로 int나 double로 변환할 수는 없다.
-		//따라서, Wrapper Class의 parse 함수를 사용할 수 있다.
+		// 삼항연산자
+		// A ? B : C
+		// A 조건이 참이면 B값으로 결정하고, 아니면 C값으로 결정한다.
+		// 조건에 따라 서로 다른값중 하나를 결정짓는 연산자
 		
-		String s1 = "1234";
-		String s2 = "3.14";
-		String s3 = "true";
+		// if는 조건에 따라서 서로 다른 코드를 수행하는 것이 목적(행위)
+		// 삼항연산자는 두개의 값중 하나를 결정하는 것이 목적(값)
 		
-//		int v1 =s1;
-		int v1 = Integer.parseInt(s1); // 문자열의 형태를 유지하면서 정수로 변화
+		int age = 25;
+		boolean isAdult = age >= 20;
 		
-//		double v2 = s2;
-		double v2 = Double.parseDouble(s2);// 문자열의 형태를 유지하면서 실수로 변환
+		System.out.println(isAdult ? "성인" : "미성년자");
 		
-//		boolean v3 = s3;
-		boolean v3 = Boolean.parseBoolean(s3); //문자열의 형태를 유지하면서 논리값으로 변환
+		String adult = isAdult ? "성인" : "미성년자";
+		System.out.println("adult : " + adult);
 		
-		System.out.println("v1 : " + v1);
-		System.out.println("v2 : " + v2);
-		System.out.println("v3 : " + v3);
-		System.out.println();
+		System.out.println("");
 		
-		System.out.println("v1 + 1 : " + (v1 + 1));
-		System.out.println("v2 + 2 : " + (v2 + 1));
-		System.out.println("!v3 : " + !v3);
-		System.out.println();
+		System.out.println("삼항 연산자 중첩예시");
 		
+		/*?*/
 		
+		int num = 3;
+		String oddEven = num % 2 ==0	// num이0이면
+							? "0"		// Zero를 대입
+							: num % 2 == 0	//0이 아니고 num이 2로 나누어 떨어지면
+								? "짝수"		//짝수를 대입
+								: "홀수";		//아니면 홀수를 대입
+		System.out.println("odd Even : " + oddEven);
+		
+		// 잘못된 예시
+//		num%2 == 0 ? System.out.println("짝수") : System.out.println("홀수");
+		
+		String test = "123411";
+		int test2 = isDigit(test) ? Integer.parseInt(test) : 0;
+		System.out.println("test2 : " + test2);
+	}
+	// 문자열의 글자들이 모두 숫자로만 구성되었는지 검사하여 결과를 boolean으로 반환하는 함수
+	static boolean isDigit(String s) {	// 문자열 s를전달받아서
+		boolean answer = true;
+		for(int i =0; i < s.length(); i++) {	// 처음부터 끝까지 글자 하나씩 꺼내서
+			if(s.charAt(i) < '0' || '9' < s.charAt(i)) {	//0보다 작거나 9보다 크면
+				return false;	//false를 반환(함수 중단
+			}
+		}
+		return answer; //문제없이 통과하면 true를 반환
 	}
 }

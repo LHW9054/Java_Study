@@ -1,36 +1,51 @@
-package wrapperclass;
+package Operator;
 
 public class Ex02 {
 	public static void main(String[] args) {
-		//Wrapper Class와 primitive type 사이의 값 대입
+		// 논리연산자의 특징
 		
-		// float과 long은 대표자료형이 아니므로, F혹은 L을 값 뒤에 붙여준다.
-		float fl = 1.2f;
-		double db = 0;
+		// 1)A && B 는 양쪽 모두 True 이여야 전체결과가 true이다.
+		// 만약, A가 false라면B의 결과에 상관없이 전체결과는 false이다.
+		// 따라서, a가 false라면 b의 내용은 체크하지 않는다.(코드를 수행하지 않는다.)
 		
-		db = fl;	//primitive type 끼리는 호환되므로, 대입이 가능하다.
-					// 왼쪽 변수의 자료형이 더 크기 때문에 값의 손실이 없어서 암묵적 형변환이 발생한다.
+		// 2) A || B 는 양쪽 모두 FALSE이여야 전체 결과가 FALSE이다.
+		// 만약, A가 true라면 B의 결과에 상관없이 전체 결과가 true이다.
+		// 따라서, A가 true라면 B의 내용은 체크하지 않는다.(코드를 수행하지 않는다.)
 		
-		System.out.println("f1 : " + fl + "       /db : " + db);
-		System.out.println();
+		int a =2, b = 1, c = 0, d = -1;
+		System.out.printf("%d, %d, %d, %d\n",a, b, c, d);
 		
-		Float fl2 = 1.2F;
-		Double db2 = 0.0;	// int 0을 바로 담을수 없어서, 실수 형태로 나타내야 한다.
+		boolean bo1 = (a++ + ++b < 0) && (c++ - d-- == 0);
+									//첫번째 조건이 true이기 때문에 뒤에 조건은 실행하지 않는다.
+		System.out.println("bo1 : " + bo1);
+		System.out.printf("%d, %d, %d, %d\n", a, b, c, d);
 		
-//		db2 = fl2;  // Wrapper Class 끼리는 같은 실수라도, 서로 호환되지 않는다.
-					// Wrapper Class 는 자신과 같은 타입의 primitive만 호환된다.
+		boolean bo2 = ((a *= 2) > b) || ((d *= c) != 0);
+		System.out.println("bo2 : " + bo2);
+		System.out.printf("%d, %d, %d, %d\n", a, b, c, d);
 		
-//		db2 = (Double)fl2; // 강제 형변환을 시도해도, 호환되지 않으므로 처리할수 없다.
+		// 제어문의 조건으로 활용할때 !flag 형식으로 사용하거나
+		// flag == false 형식으로 사용할수 있다.
 		
-		// 1) 서로 호환되는 primitive 타입을 이용하여 강제 형변환으로 대입하기.
-		// Float -> float -> double -> Double
-		db2 = (double)(float)fl2;
+		int age = 15;
+		boolean isAdult = age >=20;
 		
-		// 2) Wrapper 클래스에서 제공하는 기능(함수)을 활용한다.
-		db2 = Double.valueOf(fl2);
+		if(!isAdult) {//간결하게 표현하고 싶을때
+			System.out.println("성인이 아닙니다.!!");
+		}
 		
-		System.out.println("fl2 : " + fl2 + ", db2 : " + db2 );
-		System.out.println();
+		if(isAdult == false) {//명확하게 표현하고 싶을때
+			System.out.println("성인이 아닙니다.!!");
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 }
