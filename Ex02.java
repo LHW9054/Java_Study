@@ -1,51 +1,23 @@
-package Operator;
+package nestedLoop;
 
 public class Ex02 {
+	// 정수를 전달받아서, 해당 정수의 구구단을 출력하고 반환값이 없는 함수
+	static void gugudan(int dan) {
+		for(int i = 1; i < 10; i++) {
+			System.out.printf("%d x %d = %2d\n", dan, i, dan * i);
+		}
+		System.out.println();
+	}
+	
 	public static void main(String[] args) {
-		// 논리연산자의 특징
 		
-		// 1)A && B 는 양쪽 모두 True 이여야 전체결과가 true이다.
-		// 만약, A가 false라면B의 결과에 상관없이 전체결과는 false이다.
-		// 따라서, a가 false라면 b의 내용은 체크하지 않는다.(코드를 수행하지 않는다.)
-		
-		// 2) A || B 는 양쪽 모두 FALSE이여야 전체 결과가 FALSE이다.
-		// 만약, A가 true라면 B의 결과에 상관없이 전체 결과가 true이다.
-		// 따라서, A가 true라면 B의 내용은 체크하지 않는다.(코드를 수행하지 않는다.)
-		
-		int a =2, b = 1, c = 0, d = -1;
-		System.out.printf("%d, %d, %d, %d\n",a, b, c, d);
-		
-		boolean bo1 = (a++ + ++b < 0) && (c++ - d-- == 0);
-									//첫번째 조건이 true이기 때문에 뒤에 조건은 실행하지 않는다.
-		System.out.println("bo1 : " + bo1);
-		System.out.printf("%d, %d, %d, %d\n", a, b, c, d);
-		
-		boolean bo2 = ((a *= 2) > b) || ((d *= c) != 0);
-		System.out.println("bo2 : " + bo2);
-		System.out.printf("%d, %d, %d, %d\n", a, b, c, d);
-		
-		// 제어문의 조건으로 활용할때 !flag 형식으로 사용하거나
-		// flag == false 형식으로 사용할수 있다.
-		
-		int age = 15;
-		boolean isAdult = age >=20;
-		
-		if(!isAdult) {//간결하게 표현하고 싶을때
-			System.out.println("성인이 아닙니다.!!");
+		for(int dan = 2; dan < 10; dan++) {
+			gugudan(dan);
+//			for(int i = 1; i < 10; i++) {
+//				System.out.printf("%d x %d = %2d\n", dan, i, dan * i);
+//			}
+//			System.out.println();
 		}
-		
-		if(isAdult == false) {//명확하게 표현하고 싶을때
-			System.out.println("성인이 아닙니다.!!");
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 	}
 }
