@@ -1,23 +1,37 @@
-package nestedLoop;
+package static_final;
 
-public class Ex02 {
-	// 정수를 전달받아서, 해당 정수의 구구단을 출력하고 반환값이 없는 함수
-	static void gugudan(int dan) {
-		for(int i = 1; i < 10; i++) {
-			System.out.printf("%d x %d = %2d\n", dan, i, dan * i);
-		}
-		System.out.println();
+class Guest{
+	String name;	// non-static 필드
+	static int count;		// static 필드(서로 다른 객체라도 값을 공유하게 된다.)
+	
+	Guest(String name){		// 생성자
+		this.name=name;
+		count += 1;			// 객체를 생성할때 마다, count의 값을 1 증가시킨다.
 	}
 	
+	void show() {
+		System.out.println(name + "입장!");
+		System.out.println("현재까지 입장한 손님의 인원수 : " + count);
+	}
+	
+	
+}
+
+public class Ex02 {
+	
+	
 	public static void main(String[] args) {
+		Guest ob1 = new Guest("이지은");
+		ob1.show();
 		
-		for(int dan = 2; dan < 10; dan++) {
-			gugudan(dan);
-//			for(int i = 1; i < 10; i++) {
-//				System.out.printf("%d x %d = %2d\n", dan, i, dan * i);
-//			}
-//			System.out.println();
-		}
+		Guest ob2 = new Guest("홍진호");
+		ob2.show();
+		
+		System.out.println("현재까지의 손님 수 : " + Guest.count);
+		
+		System.out.println(Integer.parseInt("1234") + 1);
+		
+		
 		
 	}
 }
